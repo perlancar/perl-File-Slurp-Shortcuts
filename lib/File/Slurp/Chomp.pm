@@ -7,8 +7,10 @@ use warnings;
 
 use File::Slurp qw();
 
-our @my_replace  = qw(read_file slurp);
-our @my_exportok = qw(read_file_cq slurp_cq);
+our @my_replace  = qw(read_file    slurp);
+our @my_exportok = qw(read_file_c  slurp_c
+                      read_file_cq slurp_cq
+                      read_file_q  slurp_q);
 
 use base qw(Exporter);
 our %EXPORT_TAGS = %File::Slurp::EXPORT_TAGS;
@@ -37,7 +39,6 @@ sub read_file {
         return $res;
     }
 }
-
 *slurp = \&read_file;
 
 sub read_file_cq {
@@ -46,8 +47,21 @@ sub read_file_cq {
     $opts{chomp}    //= 1;
     read_file($path, %opts);
 }
-
 *slurp_cq = \&read_file_cq;
+
+sub read_file_c {
+    my ($path, %opts) = @_;
+    $opts{chomp}    //= 1;
+    read_file($path, %opts);
+}
+*slurp_c = \&read_file_c;
+
+sub read_file_q {
+    my ($path, %opts) = @_;
+    $opts{err_mode} //= 'quiet';
+    read_file($path, %opts);
+}
+*slurp_q = \&read_file_q;
 
 1;
 __END__
@@ -99,15 +113,29 @@ you can now write this:
 For the list of functions available, see File::Slurp. Below are functions
 introduced by File::Slurp::Chomp:
 
+=head2 read_file_c($path, %opts)
+
+Shortcut for:
+
+ read_file('path', chomp=>1, ...)
+
+Alias: slurp_c
+
 =head2 read_file_cq($path, %opts)
 
 Shortcut for:
 
  read_file('path', chomp=>1, err_mode=>'quiet', ...)
 
-=head2 slurp_cq($path, %opts)
+Alias: slurp_cq
 
-Alias for read_file_cq().
+=head2 read_file_q($path, %opts)
+
+Shortcut for:
+
+ read_file('path', err_mode=>'quiet', ...)
+
+Alias: slurp_q
 
 =head1 SEE ALSO
 
