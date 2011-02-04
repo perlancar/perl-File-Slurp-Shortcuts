@@ -78,6 +78,20 @@ Autochomping is supposed to be in the upcoming version of L<File::Slurp>, but
 I'm tired of waiting so this module is a band-aid solution. It wraps read_file()
 (and slurp()) so it handles the B<chomp> option.
 
+This module also offers B<read_file_cq> (or B<slurp_cq>), so if you like me
+often write this:
+
+ my $var   = read_file('/some/config/var', err_mode=>'quiet');
+ chomp($var) if defined($var);
+
+ my @lines = read_file('/some/config/file', err_mode=>'quiet');
+ chomp for @lines;
+
+you can now write this:
+
+ my $var   = slurp_cq('/some/config/var');
+ my @lines = slurp_cq('/some/config/file');
+
 =head1 FUNCTIONS
 
 =for Pod::Coverage (append_file|overwrite_file|read_dir|read_file|slurp|write_file)
