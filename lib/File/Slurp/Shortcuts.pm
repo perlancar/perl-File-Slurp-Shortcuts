@@ -69,16 +69,12 @@ __END__
 =head1 SYNOPSIS
 
  # instead of 'use File::Slurp', you 'use File::Slurp::Shortcuts' instead
- use File::Slurp::Shortcuts qw(slurp_cq ...);
- my $email   = slurp_cq('/home/user1/etc/email');
- my @domains = slurp_cq('/home/user1/etc/domains');
- ...
 
 =head1 DESCRIPTION
 
 File::Slurp::Shortcuts is a drop-in replacement for L<File::Slurp>, offering
-more shortcut functions for convenience. It currently also adds autochomping to
-read_file().
+more shortcut functions for convenience. It exports all File::Slurp exports. It
+currently also adds autochomping to read_file().
 
 About autochomping: It is supposed to be in the upcoming version of
 L<File::Slurp>, but since I'm tired of waiting, this module is the band-aid
