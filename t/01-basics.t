@@ -8,11 +8,11 @@ use warnings;
 use Test::More tests => 12;
 
 use File::Temp qw(tempdir);
-use File::Slurp::Chomp qw(write_file
-                          read_file_c  slurp_c
-                          read_file_q  slurp_q
-                          read_file_cq slurp_cq
-                     );
+use File::Slurp::Shortcuts qw(write_file
+                              read_file_c  slurp_c
+                              read_file_q  slurp_q
+                              read_file_cq slurp_cq
+                         );
 
 my $dir = tempdir(CLEANUP => 1);
 

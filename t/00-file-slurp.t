@@ -10,7 +10,7 @@ use warnings;
 use Test::More tests => 1;
 
 use File::Temp qw(tempfile);
-use File::Slurp::Chomp;
+use File::Slurp::Shortcuts;
 
 my ($fh, $filename);
 ($fh, $filename) = tempfile();

@@ -1,5 +1,5 @@
-package File::Slurp::Chomp;
-# ABSTRACT: Add autochomping capability to File::Slurp
+package File::Slurp::Shortcuts;
+# ABSTRACT: Several shortcut functions for File::Slurp
 
 use 5.010; # yes, i know, i'm spoilt.
 use strict;
@@ -68,74 +68,51 @@ __END__
 
 =head1 SYNOPSIS
 
-Instead of:
-
- use File::Slurp qw(slurp ...);
-
-use:
-
- use File::Slurp::Chomp qw(slurp ...);
-
-and in addition to File::Slurp's features, you can also:
-
- my $scalar = read_file('path', chomp=>1);
- my @array  = slurp    ('path', chomp=>1);
-
-You can also import B<read_file_cq> or B<slurp_cq> (short for "chomp & quiet")
-as a shortcut for:
-
- read_file('path', chomp=>1, err_mode=>'quiet', ...);
+ # instead of 'use File::Slurp', you 'use File::Slurp::Shortcuts' instead
+ use File::Slurp::Shortcuts qw(slurp_cq ...);
+ my $email   = slurp_cq('/home/user1/etc/email');
+ my @domains = slurp_cq('/home/user1/etc/domains');
+ ...
 
 =head1 DESCRIPTION
 
-Autochomping is supposed to be in the upcoming version of L<File::Slurp>, but
-I'm tired of waiting so this module is a band-aid solution. It wraps read_file()
-(and slurp()) so it handles the B<chomp> option.
+File::Slurp::Shortcuts is a drop-in replacement for L<File::Slurp>, offering
+more shortcut functions for convenience. It currently also adds autochomping to
+read_file().
 
-This module also offers B<read_file_cq> (or B<slurp_cq>), so if you like me
-often write this:
-
- my $var   = read_file('/some/config/var', err_mode=>'quiet');
- chomp($var) if defined($var);
-
- my @lines = read_file('/some/config/file', err_mode=>'quiet');
- chomp for @lines;
-
-you can now write this:
-
- my $var   = slurp_cq('/some/config/var');
- my @lines = slurp_cq('/some/config/file');
+About autochomping: It is supposed to be in the upcoming version of
+L<File::Slurp>, but since I'm tired of waiting, this module is the band-aid
+solution. It wraps read_file() (and slurp()) so it handles the B<chomp> option.
+It reads in file containing, e.g. "foo\n" into Perl data as "foo".
 
 =head1 FUNCTIONS
 
 =for Pod::Coverage (append_file|overwrite_file|read_dir|read_file|slurp|write_file)
 
-For the list of functions available, see File::Slurp. Below are functions
-introduced by File::Slurp::Chomp:
+For the complete list of functions available, see File::Slurp. Below are
+functions introduced by File::Slurp::Shortcuts:
 
-=head2 read_file_c($path, %opts)
+=head2 read_file_c($path, %opts) (or slurp_c)
 
 Shortcut for:
 
  read_file('path', chomp=>1, ...)
 
-Alias: slurp_c
-
-=head2 read_file_cq($path, %opts)
+=head2 read_file_cq($path, %opts) (or slurp_cq)
 
 Shortcut for:
 
  read_file('path', chomp=>1, err_mode=>'quiet', ...)
 
-Alias: slurp_cq
+I use this a lot to retrieve configuration value from files.
 
-=head2 read_file_q($path, %opts)
+=head2 read_file_q($path, %opts) (or slurp_q)
 
 Shortcut for:
 
  read_file('path', err_mode=>'quiet', ...)
 
-Alias: slurp_q
+I use this a lot to read files that are optional.
 
 =head1 SEE ALSO
 
