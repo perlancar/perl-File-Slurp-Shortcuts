@@ -104,7 +104,7 @@ Shortcut for:
 
  read_file('path', chomp=>1, err_mode=>'quiet', ...)
 
-I use this a lot to retrieve configuration value from files.
+I personally use this a lot to retrieve configuration value from files.
 
 =head2 read_file_q($path, %opts) (or slurp_q)
 
@@ -112,7 +112,7 @@ Shortcut for:
 
  read_file('path', err_mode=>'quiet', ...)
 
-I use this a lot to read files that are optional.
+I personally use this a lot to read files that are optional.
 
 =head1 SEE ALSO
 
