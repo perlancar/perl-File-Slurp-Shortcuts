@@ -88,13 +88,13 @@ It reads in file containing, e.g. "foo\n" into Perl data as "foo".
 For the complete list of functions available, see File::Slurp. Below are
 functions introduced by File::Slurp::Shortcuts:
 
-=head2 read_file_c($path, %opts) (or slurp_c)
+=func read_file_c($path, %opts) (or slurp_c)
 
 Shortcut for:
 
  read_file('path', chomp=>1, ...)
 
-=head2 read_file_cq($path, %opts) (or slurp_cq)
+=func read_file_cq($path, %opts) (or slurp_cq)
 
 Shortcut for:
 
@@ -102,7 +102,7 @@ Shortcut for:
 
 I personally use this a lot to retrieve configuration value from files.
 
-=head2 read_file_q($path, %opts) (or slurp_q)
+=func read_file_q($path, %opts) (or slurp_q)
 
 Shortcut for:
 
