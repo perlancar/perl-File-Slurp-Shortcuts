@@ -1,6 +1,6 @@
 package File::Slurp::Shortcuts;
 
-use 5.010; # yes, i know, i'm spoilt.
+use 5.010001; # yes, i know, i'm spoilt.
 use strict;
 use warnings;
 
@@ -86,7 +86,7 @@ It reads in file containing, e.g. "foo\n" into Perl data as "foo".
 
 =head1 FUNCTIONS
 
-=for Pod::Coverage (append_file|overwrite_file|read_dir|read_file|slurp|write_file)
+=for Pod::Coverage (append_file|overwrite_file|read_dir|read_file|slurp|write_file|edit_file|edit_file_lines|prepend_file)
 
 For the complete list of functions available, see File::Slurp. Below are
 functions introduced by File::Slurp::Shortcuts:
@@ -97,6 +97,10 @@ Shortcut for:
 
  read_file('path', chomp=>1, ...)
 
+=head2 slurp_c
+
+Alias for read_file_c
+
 =head2 read_file_cq($path, %opts) (or slurp_cq)
 
 Shortcut for:
@@ -105,6 +109,10 @@ Shortcut for:
 
 I personally use this a lot to retrieve configuration value from files.
 
+=head2 slurp_cq
+
+Alias for read_file_cq
+
 =head2 read_file_q($path, %opts) (or slurp_q)
 
 Shortcut for:
@@ -112,6 +120,10 @@ Shortcut for:
  read_file('path', err_mode=>'quiet', ...)
 
 I personally use this a lot to read files that are optional.
+
+=head2 slurp_q
+
+Alias for read_file_q
 
 
 =head1 SEE ALSO
