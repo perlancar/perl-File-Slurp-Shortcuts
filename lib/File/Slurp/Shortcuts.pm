@@ -1,5 +1,4 @@
 package File::Slurp::Shortcuts;
-# ABSTRACT: Several shortcut functions for File::Slurp
 
 use 5.010; # yes, i know, i'm spoilt.
 use strict;
@@ -16,6 +15,8 @@ use base qw(Exporter);
 our %EXPORT_TAGS = %File::Slurp::EXPORT_TAGS;
 our @EXPORT      = @File::Slurp::EXPORT;
 our @EXPORT_OK   = (@File::Slurp::EXPORT_OK, @my_exportok);
+
+# VERSION
 
 no strict 'refs';
 # import all of File::Slurp, except our own replacement
@@ -64,11 +65,12 @@ sub read_file_q {
 *slurp_q = \&read_file_q;
 
 1;
-__END__
+# ABSTRACT: Several shortcut functions for File::Slurp
 
 =head1 SYNOPSIS
 
  # instead of 'use File::Slurp', you 'use File::Slurp::Shortcuts' instead
+
 
 =head1 DESCRIPTION
 
@@ -80,6 +82,7 @@ About autochomping: It is supposed to be in the upcoming version of
 L<File::Slurp>, but since I'm tired of waiting, this module is the band-aid
 solution. It wraps read_file() (and slurp()) so it handles the B<chomp> option.
 It reads in file containing, e.g. "foo\n" into Perl data as "foo".
+
 
 =head1 FUNCTIONS
 
@@ -110,10 +113,9 @@ Shortcut for:
 
 I personally use this a lot to read files that are optional.
 
+
 =head1 SEE ALSO
 
 L<File::Slurp>, obviously.
 
 =cut
-
-1;
