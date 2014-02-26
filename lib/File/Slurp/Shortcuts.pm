@@ -3,6 +3,7 @@ package File::Slurp::Shortcuts;
 use 5.010001; # yes, i know, i'm spoilt.
 use strict;
 use warnings;
+use experimental 'smartmatch';
 
 use File::Slurp qw();
 
